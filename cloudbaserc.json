@@ -1,0 +1,17 @@
+{
+    "envId": "hello-tcb-9glo12vd5bd3bd0d",
+    "version": "2.0",
+    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+    "functionRoot": "./functions",
+    "functions": [],
+    "region": "ap-shanghai",
+    "framework": {
+        "name": "tcbcms-nextjs",
+        "plugins": {
+            "client": {
+                "use": "@cloudbase/framework-plugin-next",
+                "inputs": {}
+            }
+        }
+    }
+}
