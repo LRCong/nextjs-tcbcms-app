@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 基于 Next.js 以及 CloudBase CMS 的静态博客 demo 
 
-## Getting Started
++ [CloudBase CMS](https://docs.cloudbase.net/cms/intro.html) 是腾讯云云开发推出的，基于 Node.js 的 Headless 内容管理平台，提供了丰富的内容管理功能。
++ [Next.js](https://nextjs.org/docs/getting-started) 是能够提供静态生成、服务端渲染等功能的优秀生产级 React 框架。
 
-First, run the development server:
+本 demo 使用了 Next.js 静态生成（Static Generation）的特性，将 CloudBase CMS 作为数据拉取的数据源，并且能够通过 TencentCloudBase 轻易部署部署到云端。
 
-```bash
+## 配置与使用
+
+### 开通 CMS
+首先，在腾讯云控制台中创建云开发 CloudBase 云环境，并在扩展应用中开通 CMS 内容管理系统。
+
+### 导入模型和集合
+在 ./schema 和 ./data 文件夹下可以找到 json 格式的模型文件和集合数据文件，可以在 CMS 系统的内容模型和内容集合中分别导入两个文件夹下的文件，图片资源可能失效，可以自行替换。
+
+### 配置环境变量
+在 cloudbaserc.json 配置文件中配置好自己的云环境 ID，然后在 env.js.bak 中配置自己账号或者子账号的 secretId 以及 secretKey，并删除文件名的bak后缀。
+
+### 运行
+确认模型和集合数据导入成功，以及配置文件完善后，在命令行中运行
+```shell
+npm install
 npm run dev
-# or
-yarn dev
 ```
+应用启动之后，浏览器访问 localhost:3000/next-ssr，就可以看到渲染返回的页面。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 部署
+在命令行中运行
+```
+npm install -g @cloudbase/cli@latest
+cloudbase
+```
